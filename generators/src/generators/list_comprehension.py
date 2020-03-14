@@ -1,7 +1,7 @@
 # source:
 # functional python programming L554
 
-from typing import Iterator
+from typing import Iterator, Set, FrozenSet
 
 
 def do_sum(it: Iterator[int]) -> int:
@@ -12,3 +12,13 @@ def do_sum(it: Iterator[int]) -> int:
     # local variable 'elem' referenced before assignment
     # elem += 1
     return o
+
+
+def set_comprehension() -> None:
+    s = {i for i in range(10)}
+    fzs = frozenset(i for i in range(10))
+    assert s == fzs
+
+
+def dict_comprehension() -> None:
+    d = {i: i for i in range(10)}
