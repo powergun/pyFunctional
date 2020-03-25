@@ -19,10 +19,11 @@ class TestItertoolsTechniques(unittest.TestCase):
         self.assertEqual(i, [])
         i = list(itertools_tech.iter_pairs(range(1)))
         self.assertEqual(i, [])
+
+        # immutable data source
         i = list(itertools_tech.iter_pairs(range(5)))
         self.assertEqual(i, [(0, 1), (1, 2), (2, 3), (3, 4)])
 
-        # this does not work!!
-        # iter wraps a mutable container
-        # i = list(itertools_tech.iter_pairs(iter([0, 1, 2, 3, 4])))
-        # self.assertEqual(i, [(0, 1), (1, 2), (2, 3), (3, 4)])
+        # mutable data source
+        i = list(itertools_tech.iter_pairs(iter([0, 1, 2, 3, 4])))
+        self.assertEqual(i, [(0, 1), (1, 2), (2, 3), (3, 4)])

@@ -1,5 +1,5 @@
 import itertools
-from typing import Iterable, Any, List, Tuple
+from typing import Iterable, Any, List, Tuple, TypeVar
 
 
 # source: FP Python P/48
@@ -21,10 +21,17 @@ def take(it: Iterable[Any], n: int) -> List[Any]:
 # inspired by: Functional Python Programming P/69
 # given s = {1, 2, 3, 4, 5..}
 # want  {(1, 2), (2, 3), (3, 4)...}
-def iter_pairs(it: Iterable[Any]) -> Iterable[Tuple[Any, Any]]:
+T_ = TypeVar('T_')
+TT = Tuple[T_, T_]
+IterTT = Iterable[TT]
+IterT = Iterable[T_]
+
+
+def iter_pairs(it: IterT) -> IterTT:
+    # the original iterator, it, must be preserved
+    first, second = itertools.tee(it, 2)
     try:
-        (it_, ) = itertools.tee(it, 1)
-        next(it_)
+        next(second)
     except StopIteration:
         return iter(tuple())
-    return zip(it, it_)
+    return zip(first, second)
