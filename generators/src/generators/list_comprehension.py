@@ -1,7 +1,8 @@
 # source:
 # functional python programming L554
 
-from typing import Iterator, Set, FrozenSet
+from typing import Iterator, Iterable, Set, FrozenSet
+import itertools
 
 
 def do_sum(it: Iterator[int]) -> int:
@@ -22,3 +23,4 @@ def set_comprehension() -> None:
 
 def dict_comprehension() -> None:
     d = {i: i for i in range(10)}
+    assert len(d) == 10
