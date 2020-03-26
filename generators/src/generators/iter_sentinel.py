@@ -9,6 +9,7 @@ from typing import IO, List, Text
 import functools
 import itertools
 import re
+import random
 
 
 # type hint for file-like objects
@@ -19,3 +20,10 @@ def read_all(fp: IO[Text], sentinel: Text, pattern: Text) -> List[Text]:
     it = iter(fp.readline, sentinel)
     sel = filter(functools.partial(re.search, pattern), it)
     return list(sel)
+
+
+# a callable can be passed to iter() function too
+# see functional python programming P/107
+def random_till_lucky(lower, upper, lucky_num):
+    gen = lambda: random.randint(lower, upper)
+    return iter(gen, lucky_num)
