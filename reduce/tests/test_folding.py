@@ -1,7 +1,7 @@
 import unittest
 
 import operator
-from firstclass import folding
+from reduce import folding
 
 
 class TestFoldl(unittest.TestCase):
