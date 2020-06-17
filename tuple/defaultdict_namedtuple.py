@@ -12,6 +12,8 @@ class CallCount(NamedTuple):
 
 
 def main():
+    # use the second form of defaultdict ctor that takes a "default factory"
+    # function; this function produces a value of type T
     rec = defaultdict(CallCount.empty)
     print(rec['asd'])
     rec['asd'] += (1, 1)
