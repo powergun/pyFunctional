@@ -4,6 +4,8 @@
 # you can compare data classes because __eq__ is implemented for you
 # you can easily print a data class for debugging because __repr__ is implemented as well
 # data classes require type hints, reduced the chances of bugs
+# see also:
+# https://realpython.com/python-data-classes/
 
 import dataclasses
 import unittest
