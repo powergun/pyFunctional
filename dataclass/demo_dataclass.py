@@ -21,6 +21,11 @@ class TestDataClass(unittest.TestCase):
     def test_equal(self):
         self.assertEqual(Card('1', '2'), Card('1', '2'))
 
+    def test_mutability(self):
+        c = Card('1', '2')
+        c.rank = '10'  # dataclass instance is mutable, unlike NamedTuple
+        self.assertEqual(Card('10', '2'), c)
+
 
 if __name__ == '__main__':
     unittest.main()
